@@ -1,0 +1,1 @@
+/home/fi/桌面/rust/rust_learning/rust_basis/2.1_variable_binding_and_destruction/test_2_1/target/release/test_2_1: /home/fi/桌面/rust/rust_learning/rust_basis/2.1_variable_binding_and_destruction/test_2_1/src/main.rs
