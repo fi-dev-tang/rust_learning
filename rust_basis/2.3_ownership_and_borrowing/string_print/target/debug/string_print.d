@@ -1,0 +1,1 @@
+/home/fi/桌面/rust/rust_learning/rust_basis/2.3_ownership_and_borrowing/string_print/target/debug/string_print: /home/fi/桌面/rust/rust_learning/rust_basis/2.3_ownership_and_borrowing/string_print/src/main.rs
