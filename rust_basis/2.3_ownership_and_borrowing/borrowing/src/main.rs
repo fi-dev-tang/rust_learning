@@ -90,7 +90,7 @@ fn limit_multi_borrowing(){
 可变引用与不可变引用不能同时存在
 */
 fn mutable_and_non_mutable_coexist(){
-    let mut s = String::from("mutable and non mutable borrowing");
+    let s = String::from("mutable and non mutable borrowing");
 
     let r1 = &s;  // 不可变引用
     let r2 = &s;  // 不可变引用
@@ -118,6 +118,25 @@ fn new_compiler_range(){
     println!("r3 = {}", r3);
 }
 
+
+/*
+悬垂引用(Dangling reference)
+指针所指向的内容被释放之后，继续使用指针
+*/
+fn dangling_reference_example(){
+    let dangling_reference = create_non_dangling_reference();
+    println!("dangling_reference: {}", dangling_reference);
+}
+
+fn create_non_dangling_reference() -> String{  
+    /* 
+    报错: expected named lifetime parameter
+    this function's return type contains a borrowed value, but there is no value for it to be borrowed from
+    */
+    let a_string = String::from("create_non_dangling_reference");
+    a_string
+}
+
 fn main(){
     borrowing_using();
 
@@ -132,4 +151,6 @@ fn main(){
     mutable_and_non_mutable_coexist();  // 可变引用和不可变引用不能同时存在
 
     new_compiler_range();       // 可变引用和不可变引用不能同时存在, 前提是: 作用域已经结束了
+
+    dangling_reference_example();
 }
