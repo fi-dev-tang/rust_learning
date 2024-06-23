@@ -234,6 +234,38 @@ fn string_concatenate_1(){
     dbg!(result);
 }
 
+/*
+连接操作说明:
+fn add(self, s: &str) -> String
+其中前者的所有权会被转移
+[add 解释]:
+s1 这个变量通过调用 add() 方法后，所有权被转移到 add() 方法里面，
+add() 方法调用后就被释放了，同时 s1 也被释放了。再使用 s1 就会发生错误。这里涉及到所有权转移(Move)的相关知识。
+*/
+fn add_example(){
+    let s1 = String::from("Hello");
+    let s2 = String::from(",Rust");
+    /*
+    在下句中，s1 的所有权被转移走了，因此后面不能再使用 s1
+    */
+    let s3 = s1 + &s2;
+
+    assert_eq!(s3, "Hello,Rust");
+    // println!("{}", s1);  // 报错
+}
+
+/*
+连接操作的第二种使用, format! 类似于 print!
+*/
+fn string_concatenate_2(){
+    let s1 = String::from("Hello");
+    let s2 = String::from("Rust");
+
+    let s = format!("{},{}", s1, s2);
+    println!("s = {}", s);
+}
+
+
 fn main(){
     file_operation();           // 用复合类型实现文件的打开，读取，关闭操作 API 模拟（没有真实的实现)
 
@@ -268,4 +300,9 @@ fn main(){
 
     // 连接操作
     string_concatenate_1();
+
+    // 连接操作的 add 说明
+    add_example();
+
+    string_concatenate_2();
 }
