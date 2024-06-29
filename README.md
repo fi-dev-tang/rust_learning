@@ -38,3 +38,5 @@ rustc intro1.rs
 得到结果。
 
 ![rustling_into1](picture/rustlings_intro1.png)
+
+现在分成两个学习教程，以 Rust 语言圣经为主，同时兼顾 Rust-by-example 中的完整代码程序。

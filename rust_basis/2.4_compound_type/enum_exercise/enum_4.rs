@@ -9,7 +9,7 @@ enum Message{
 }
 
 fn main(){
-    let msgs = [  // 这里写成 let msgs: [Message, 3] 报错
+    let msgs: [Message; 3]= [  // 这里写成 let msgs: [Message, 3] 报错, 发现正确语法中间应该是分号
         Message::Quit,
         Message::Move{x:1, y:3},
         Message::ChangeColor(255, 255, 0)

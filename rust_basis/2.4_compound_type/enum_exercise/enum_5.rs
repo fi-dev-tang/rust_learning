@@ -5,7 +5,7 @@ fn main(){
     let six = plus_one(five);
     let none = plus_one(None);
 
-    if let n = six{
+    if let Some(n) = six{
         println!("{:?}", n);
     }else{
         panic!("不要让这行代码运行! ");
