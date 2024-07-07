@@ -210,3 +210,33 @@ assert!(matches!(foo, 'A'..='Z' | 'a'..='z'));
 let bar = Some(4);
 assert!(matches!(bar, Some(x) if x > 2));
 ```
+
+### 变量遮蔽
+无论是 match 还是 if let, 这里都是一个新的代码块，而且这里的绑定相当于新变量，如果你使用同名变量，会发生变量遮蔽:
+```rust
+fn main(){
+    let age = Some(30);
+    println!("在匹配前，age 是 {:?}",age);      // Some(30)
+    if let Some(age) = age{
+        println!("匹配出来的 age 是 {}", age);  // 30
+    }
+
+    println!("在匹配后， age 是 {:?}", age);    // Some(30)
+}
+```
+在 if let 中, = 右边 Some(i32) 类型的 age 被左边 i32 类型的新 age 遮蔽了，该遮蔽一直持续到 if let 语句块的结束。
+因此，第三个 println! 输出的 age 依然是 Some(i32) 类型。
+
+对于 match 类型也是如此:
+```rust
+fn main(){
+    let age = Some(30);
+    println!("在匹配前, age 是 {:?}", age);
+    match age {
+        Some(age) => println!("匹配出来的 age 是{}", age),
+        _ => (),
+    }
+    println!("在匹配后，age 是 {:?}", age);
+}
+```
+match 中的变量遮蔽其实不是那么容易看出，因此要小心。这里最好不要使用同名，避免难以理解。
