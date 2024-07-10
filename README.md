@@ -40,3 +40,16 @@ rustc intro1.rs
 ![rustling_into1](picture/rustlings_intro1.png)
 
 现在分成两个学习教程，以 Rust 语言圣经为主，同时兼顾 Rust-by-example 中的完整代码程序。
+
+更新遇到的第一个问题，在尝试修改 match(setting_value, new_setting_value) 时，试图修改其为带有引用类型的函数。
+```rust
+fn customized_change(mut setting_value: &mut Option<i32>, new_setting_value: &mut Option<i32>){
+    //...
+    setting_value = new_setting_value;
+}
+```
+在 setting_value 之前加入 mut, 使其成为可以修改指针指向的引用，
+这个引用指向的位置直接变成了 new_setting_value 所指向的位置。
+但一般来说，match(setting_value, new_setting_value) 作为模式匹配，并不完全能够进行交换（涉及到所有权改变）。
+解决方案和讨论中，提到了两种正确的通过引用修改值的方法。
+在新建的 /problem 文件夹下有所展示。
