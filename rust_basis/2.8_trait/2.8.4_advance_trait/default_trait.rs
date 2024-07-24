@@ -147,6 +147,27 @@ fn trait_bound_in_trait_definition(){
     point.output_line();
 }
 
+// 破除孤儿规则: 孤儿规则，如果当前的类型和特征都不是在本作用域中出现，则无法为该类型实现特征
+// 一种解决方法，在需要实现的类型外面包裹一层，将其作为新结构体的成员，调用方式为 self.0, 构成元组结构体
+// 示例: 为 Vec<String> 重新定义 Display 特征方法
+struct Wrapper(Vec<String>);
+
+impl fmt::Display for Wrapper{
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result{
+        write!(f, "[{}]", self.0.join(","))
+    }
+}
+
+fn implement_display_for_vec_string(){
+    let wrapper = Wrapper(vec![String::from("hi"), String::from("close"), String::from("Rust"), String::from("close again")]);
+    // println!("{}", wrapper.fmt().unwrap());     // 这种写法是错的.
+    /*
+    修正一个观念上的错误，fmt 方法是为格式化器 fmt::Formatter 准备的，
+    它应该由格式化宏(println!, fmt!) 内部自动调用，而不是直接手动调用， 手动调用的写法 wrapper.fmt().unwrap() 有问题
+    */
+    println!("{}", wrapper);
+}
+
 fn main(){
     default_adding_trait();                 // <RHS=Self> 加法运算符重载
     adding_two_types_together();            // meters + millimeters
@@ -156,4 +177,7 @@ fn main(){
 
     // 特征定义中的特征约束
     trait_bound_in_trait_definition();      // 需要预先实现要求的特征
+
+    // 孤儿规则下实现: 在当前作用域中实现不在本作用域中的类型和特征, Wrapper 进行包裹
+    implement_display_for_vec_string();
 }
