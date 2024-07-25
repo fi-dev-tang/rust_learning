@@ -53,3 +53,6 @@ fn customized_change(mut setting_value: &mut Option<i32>, new_setting_value: &mu
 但一般来说，match(setting_value, new_setting_value) 作为模式匹配，并不完全能够进行交换（涉及到所有权改变）。
 解决方案和讨论中，提到了两种正确的通过引用修改值的方法。
 在新建的 /problem 文件夹下有所展示。
+
+新增一个关注的教程: 在 Rust course 2.9.1 Vector 提到了
+《Rust 秘典(死灵书)》 中对 std::vec::Vec<T> 的手动实现，相关coding记录在 rust_basis/2.9_collections/rust_pure_white 目录下
