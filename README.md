@@ -56,3 +56,6 @@ fn customized_change(mut setting_value: &mut Option<i32>, new_setting_value: &mu
 
 新增一个关注的教程: 在 Rust course 2.9.1 Vector 提到了
 《Rust 秘典(死灵书)》 中对 std::vec::Vec<T> 的手动实现，相关coding记录在 rust_basis/2.9_collections/rust_pure_white 目录下
+
+(2024/09/25) 更新情况: 留了一个坑等待填完，这个坑是手动实现《Rust 秘典(死灵书)》里关于 vector 的实现，有空的时候再补起来。
+现在需要用到 rust 里面关于多线程和异步的部分，先增加这部分的info。
