@@ -1,3 +1,59 @@
 # cargo 相关的忽略规则
 /target/
 
+# 注意：通常会忽略目标目录，因为它包含由 Cargo 构建的二进制文件
+/target/
+
+# Cargo 包管理器输出
+**/Cargo.lock
+# 可以通过配置在库中忽略 Cargo.lock
+# https://doc.rust-lang.org/cargo/faq.html#why-do-binaries-have-cargolock-in-version-control-but-not-libraries
+
+# 忽略调试文件和库生成的编辑器/IDE 目录
+**/*.rs.bk
+
+# 包含 IDE、编辑器生成的目录和文件
+# 是否真的需要忽略这些，取决于团队的开发工具
+/.idea/
+/.vscode/
+/*.code-workspace
+
+# Rustyline和Cargo-edit生成的历史文件
+.history
+
+# 如果你使用 rustfmt 和 clippy 在工作流中，可以选择不忽略
+rustfmt.toml
+.clippy.toml
+
+# 编辑器特有的配置和备份文件
+*~
+*.swp
+*.swo
+*.swn
+\#*\#
+
+# 日志和临时文件
+*.log
+*.tmp
+*.temp
+
+# Dtrace和Systrace文件
+*.tmproj
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+.*.swp
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Rustc 高级科学计算文件
+.dep.py
+*.rlib
