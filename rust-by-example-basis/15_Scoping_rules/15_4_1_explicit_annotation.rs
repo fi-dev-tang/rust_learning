@@ -36,5 +36,5 @@ fn main(){
 
     print_refs(&four, &nine);
 
-    failed_borrow();
+    failed_borrow(); 
 }
