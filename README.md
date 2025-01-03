@@ -59,3 +59,6 @@ fn customized_change(mut setting_value: &mut Option<i32>, new_setting_value: &mu
 
 (2024/09/25) 更新情况: 留了一个坑等待填完，这个坑是手动实现《Rust 秘典(死灵书)》里关于 vector 的实现，有空的时候再补起来。
 现在需要用到 rust 里面关于多线程和异步的部分，先增加这部分的info。
+
+补一个新的提交，目前根据 rustlings 中涉及到的部分补充对应的语法规则。
+(2025/1/3) Rust语言圣经(Rust Course) 4.2 函数式编程:闭包、迭代器, 补全rust 中关于函数式特性的部分: 闭包 Closure 和迭代器 Iterator
